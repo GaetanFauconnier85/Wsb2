@@ -66,6 +66,7 @@
                         <li class="list_item"><a href="activite.php">Mes activites</a></li> <hr>
                         <li class="list_item"><a href="Profil.php">Profil</a></li> <hr>
                         <li class="list_item"><a href="ProposeAct.php">Ajouter une activite</a></li> <hr>
+                        <li class ="list_item"><a href="deconnection.php">Déconnection</a></li>
                     </ul>
 
                 </div>
