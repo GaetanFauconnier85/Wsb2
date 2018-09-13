@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once 'db.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,10 +45,7 @@
 
 <?php
 
-$bdd = new PDO('mysql:host=localhost;dbname=wsb2;charset=utf8', 'root', '');
-
-
-$reponse = $bdd->query('SELECT * FROM activite');
+$reponse = $pdo->query('SELECT * FROM activite');
 
 ?>
 
@@ -64,9 +65,9 @@ while ($donnees = $reponse->fetch()) {
     ?>
     <tr>
     
-    <th scope="row"><?php echo $donnees['nomAct'];?> 
-    <th scope="row"><?php echo $donnees['Lieu'];?>
-    <th scope="row"><?php echo $donnees['Heure'];?>
+    <th scope="row"><?php echo $donnees->nomAct;?> 
+    <th scope="row"><?php echo $donnees->Lieu;?>
+    <th scope="row"><?php echo $donnees->Heure;?>
      </tr> <?php
 }
 ?>
