@@ -1,0 +1,80 @@
+body{
+    text-align: center;
+    background-color:#8E5B50;
+    height: 100%;
+}
+html{
+    height: 100%;
+    overflow-y: hidden;
+}
+.enBas{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+hr{
+    margin-left: 300px;
+    margin-right: 250px;
+
+}
+.oui{
+    overflow-y: scroll;
+    height: 75%;
+    padding: 50px;
+    background-color: #8E5B50;
+    padding-top : 0%;
+    padding-bottom : 0%;
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 20px;
+  height: 20px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 20px;
+  height: 20px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+.entoureTexte{
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
+    padding: 20px;
+    margin: 20px;
+    background-color: rgb(204, 221, 214);
+    border-radius: 10px;
+}
+.nomUser{
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
+    float: left;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+.btn-danger{
+    margin-right: 2%;
+}
+.btn-success{
+    margin-left: 2%;
+}
+
+h1{
+    margin: 1%;
+}
