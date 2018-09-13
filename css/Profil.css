@@ -1,0 +1,74 @@
+body{
+    text-align: center;
+    height: 100%;
+    background-color: blanchedalmond;
+}
+html{
+    overflow-y: hidden;
+    height: 100%;
+}
+div{
+    padding: 5px;
+}
+.btn-success{
+   background-color: green;
+   float: right; 
+   margin : 10px;
+   margin-right : 0%;
+}
+.btn-danger{
+   background-color: red; 
+   float: right; 
+   margin : 10px;
+}
+
+hr{
+    margin-left: 300px;
+    margin-right: 250px;
+}
+
+.p {
+    width : 95%;
+    margin : 2%;
+    height: 23%;
+    float: left;
+    display: block;
+    border-radius: 10px;
+    margin-bottom: 0%;
+    }
+
+.entoureTexte{
+    text-align: left;
+}
+
+.input-group{
+    width: 98%;
+    margin : auto;
+    margin-top: 2%;
+}
+
+.t {
+    border-width:1px;
+    border-style:groove;
+    border-color:black;
+    padding : 2%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    width : 47%;
+    height : 54%;
+    float: left;
+    overflow-y: scroll;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+
+
+
+img{
+    max-width: 50%;
+    max-height: 50%;
+}   
+
+h1{
+    text-align: left;
+}
