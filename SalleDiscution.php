@@ -21,21 +21,34 @@ require_once 'db.php';
         
     <?php include 'menu.php';
     $idClient = $_SESSION['id'];
+    $idAct = $_SESSION['idAct'];
 
     $reponse = $pdo->prepare('SELECT * FROM participeact where idClient = ?');
     $reponse->execute([$idClient]);
 
-    $repo = $pdo->prepare('SELECT * FROM message m join activite a on a.idAct=m.idAct join client c on c.Id=m.idClient ');
-    $repo->execute([$idClient]);
-    
+    $repo = $pdo->prepare('SELECT * FROM message m join activite a on a.idAct=m.idAct join client c on c.Id=m.idClient where m.idAct=:idAct ');
+    $repo->execute(array(
+        ":idAct" => $_SESSION['idAct']
 
+    ));
     
     
     ?>
+
+<?php 
+
+if(!empty($_POST['oui'])) {
+$mess=$_POST['oui'];
+$requ = $pdo->prepare("INSERT INTO message SET idClient = ? ,idAct=?,message=?");
+$requ->execute([$idClient, $_SESSION['idAct'],$mess]);
+
+}?>
+
+
     <?php 
 
 $test = $reponse->fetch(); 
-if(!empty($_POST)&& $test->idAct != $_SESSION['idAct']) {
+if(!empty($_POST)&& ($test->idAct != $_SESSION['idAct'])) {
 
 $req = $pdo->prepare("INSERT INTO participeact SET idClient = ?, idAct = ?");
 $req->execute([$idClient,$_SESSION['idAct']]);
@@ -52,7 +65,18 @@ $req->execute([$idClient,$_SESSION['idAct']]);
         </div>
 
     <hr>
-    <form method="post" action="SalleDiscution">
+
+
+
+
+<br>
+    <a href="Acceuil.php"><button type="button" class="btn btn-danger">Retour à l'accueil</button></a>                        
+
+    <form action="" method="post">
+        <a href="activite.php"><input type="button" value = "Ajouter cette activité à mon panier" class="btn btn-success"></a>
+    </form>
+
+    <form method="post" action="SalleDiscution.php">
     <div class="form-group">
             <div class="input-group input-group-lg icon-addon addon-lg">
                 <input name="oui" type="text" placeholder="Ajouter commentaire" id="schbox" class="form-control input-lg">
@@ -63,25 +87,6 @@ $req->execute([$idClient,$_SESSION['idAct']]);
             </div>
 </div>
             </form>
-
-<?php 
-
-if(!empty($_POST['oui'])) {
-$mess=$_POST['oui'];
-$requ = $pdo->prepare("INSERT INTO message SET idClient = ? ,idAct=?,message=?");
-$requ->execute([$idClient, $_SESSION['idAct'],$mess]);
-
-}?>
-
-
-<br>
-    <a href="Acceuil.php"><button type="button" class="btn btn-danger">Retour à l'accueil</button></a>                        
-
-    <form action="" method="post">
-        <a href="activite.php"><input type="button" value = "Ajouter cette activité à mon panier" class="btn btn-success"></a>
-    </form>
-
-
 
     </body>
 </html>

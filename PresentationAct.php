@@ -19,21 +19,29 @@ require_once 'db.php';
 
  <?php include 'menu.php';
  
- $idAct = $_GET['idAct'];
- $_SESSION['idAct'] = $idAct;
+ 
+
         
         $reponse = $pdo->prepare('SELECT * FROM activite  where idAct=:idAct');
         $reponse->execute(array(
-            ":idAct" => $idAct
+            ":idAct" => $_SESSION['idAct']
 
         ));
 
         $comment = $pdo->prepare('SELECT * FROM commentaire co join activite a on a.idAct=co.idAct join client c on c.Id=co.idClient where co.idAct=:idAct');
        $comment->execute(array(
-         ":idAct" => $idAct
+         ":idAct" => $_SESSION['idAct']
        ));
  ?>
 
+
+<?php 
+
+if(!empty($_POST['oui'])) {
+$mess=$_POST['oui'];
+$requ = $pdo->prepare("INSERT INTO commentaire SET idClient = ? ,idAct=?,commentaire=?");
+$requ->execute([$_SESSION['id'], $_SESSION['idAct'],$mess]);
+}?>
 
     <div class="p">
 
@@ -86,11 +94,16 @@ require_once 'db.php';
 <?php 
 while($com = $comment->fetch()){ 
 
- echo $com->Nom; echo $com->commentaire;echo $com->Heure; ?> <br> <?php
+ echo $com->Nom;?> <?php echo $com->Prenom;?> a écrit :<b> <?php echo $com->commentaire;?></b> à <?php echo $com->Heure; ?><br> <br> <?php
 
 } ?>
 
-    <form method="post" action="PresentationAct.php">
+
+
+</div>
+
+
+   <form method="post" action="PresentationAct.php">
     <div class="form-group">
             <div class="input-group input-group-lg icon-addon addon-lg">
                 <input name="oui" type="text" placeholder="Ajouter commentaire" id="schbox" class="form-control input-lg">
@@ -100,16 +113,6 @@ while($com = $comment->fetch()){
                 </span>
             </div>
 </div>
-
-<?php 
-
-if(!empty($_POST['oui'])) {
-$mess=$_POST['oui'];
-$requ = $pdo->prepare("INSERT INTO commentaire SET idClient = ? ,idAct=?,commentaire=?");
-$requ->execute([$idClient, $_SESSION['idAct'],$mess]);
-
-}?>
-
-</div>
+</form>
     </body>
 </html>

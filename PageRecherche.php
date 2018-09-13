@@ -37,9 +37,15 @@ require_once 'db.php';
 
                 <div class="container">
                     <?php 
-                    while($donnees = $reponse->fetch()){ ?>
+                    while($donnees = $reponse->fetch()){ 
+                        
+                        ?>
                        <hr> <?php echo $donnees->nomAct;?> proposé par <?php echo $donnees->nomProprio;?><form action="PresentationAct.php" class="suc" method="GET">
-                         <input type='hidden' name="idAct" value=<?php  echo $_SESSION['idAct'] ?>>  <button type="submit"  class="btn btn-success suc">Voir Profil</button><hr>
+
+<?php $idAct = $donnees->idAct;
+                        $_SESSION['idAct'] = $idAct;?>
+
+                         <input type='hidden' name="idAct" value=<?php echo $_SESSION['idAct']; ?>>  <button type="submit"  class="btn btn-success suc">Voir Profil</button><hr>
                     </form>
  <?php
                     } ?>
