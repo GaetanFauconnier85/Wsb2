@@ -1,0 +1,48 @@
+
+.suc {
+  
+    display: block;
+    margin : auto;
+    margin-top : 1%;
+ }
+
+ .entoureTexte{
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
+    padding: 20px;
+    margin: 20px;
+    background-color: rgb(204, 221, 214);
+    border-radius: 10px;
+} 
+.entoureTexte1{
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
+    padding: 20px;
+    margin: 20px;
+    background-color: rgb(204, 221, 214);
+    overflow-y : scroll;
+    height: 40%;
+    border-radius: 10px;
+}
+
+
+.cadre{
+    border-width:1px;
+    border-style:solid;
+    border-color:black;
+    float: left;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+body{
+    text-align: center;
+    height: 100%;
+    background-color: #8E5B50;
+}
+html{
+    overflow-y: hidden;
+    height: 100%;
+}
