@@ -1,7 +1,7 @@
 <?php
-
+session_start();
+require_once 'db.php';
 ?>
-
 <html>
     <head>
         <meta charset="UTF-8">
@@ -16,17 +16,15 @@
     </head>
     <body>
         <?php include 'menu.php';?>
-<br>
+        <br>
 
-<?php
+        <?php
 
-$bdd = new PDO('mysql:host=localhost;dbname=wsb2;charset=utf8', 'root', '');
+        $IdSession = $_SESSION['id'];
 
-$IdSession = 1;
+        $reponse = $pdo->query('SELECT * FROM activite a join participeact pa on pa.idAct = a.idAct join client c on c.Id = pa.idClient where '.$IdSession.'=Id');
 
-$reponse = $bdd->query('SELECT * FROM activite a join participeact pa on pa.idAct = a.idAct join client c on c.Id = pa.idClient where '.$IdSession.'=Id');
-
-?>
+        ?>
         <div>
             <div class="wrapper">
                 <aside class="aside aside-1">Mes activités en cours</aside>
@@ -44,11 +42,11 @@ while ($donnees = $reponse->fetch()) {
                             <table>
                                 <tr>
                    
-                                    <td class="td-name">Proposé par <b><?php echo $donnees['nomProprio'];?> </b></td>
-                                    <td class="td-activity">Activité : <b><?php echo $donnees['nomAct'];?> </b></td>
-                                    <td class="td-map">Le lieu : <b><?php echo $donnees['Lieu'];?></b></td>
-                                    <td class="td-date">La date : <b><?php echo $donnees['Heure'];?></b></td>
-                                    <td class="td-time">Durée : <b><?php echo $donnees['Duree'];?></b></td>
+                                    <td class="td-name">Proposé par <b><?php echo $donnees->nomProprio;?> </b></td>
+                                    <td class="td-activity">Activité : <b><?php echo $donnees->nomAct;?> </b></td>
+                                    <td class="td-map">Le lieu : <b><?php echo $donnees->Lieu;?></b></td>
+                                    <td class="td-date">La date : <b><?php echo $donnees->Heure;?></b></td>
+                                    <td class="td-time">Durée : <b><?php echo $donnees->Duree;?></b></td>
 
                                 </tr>
                             </table>
