@@ -1,0 +1,98 @@
+.wrapper {
+    display: flex;
+    flex-flow: row ;
+    font-weight: bold;
+    text-align: center;
+}
+
+.wrapper > * {
+    padding: 10px;
+    width: 100%;
+}
+
+.wrapper2 {
+    display: flex;
+    flex-flow: row ;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.wrapper2 > * {
+    padding: 10px;
+    width: 100%;
+}
+
+.aside-4 {
+    background: #dee2e6;
+    border-left: 1px solid black; 
+}
+
+.aside-3\.1 {
+    background: #dee2e6;
+}
+
+.aside-3 {
+    background: #dee2e6;
+    width: 420%;
+}
+
+.aside-1 {
+    background: #6d6d6d;
+    width: 400%;
+    color: #fff;
+}
+
+.aside-2 {
+    background: #6d6d6d;
+    color: #fff;
+    border-left: 1px solid black; 
+}
+
+td {
+    border: 1px solid black;
+    padding: 10px 15px;
+    width: auto;
+}
+
+.td-name {
+    width: 22%;
+}
+
+.td-activity {
+    width: 21%;
+}
+.td-map {
+    width: 30.1%;
+}
+.td-date {
+    width: 20%;
+}
+.td-time {
+    width: 20%;
+}
+.tout {
+    overflow-y: scroll;
+    height : 85%;
+}
+/*
+@media all and (min-width: 600px) {
+    .aside { flex: 1 auto; }
+}
+
+@media all and (min-width: 800px) {
+    .main    { flex: 3 0px; }
+    .aside-1 { order: 1; }
+    .main    { order: 2; }
+    .aside-2 { order: 3; }
+    .footer  { order: 4; }
+}
+*/
+body{
+    height: 100%;
+
+}
+html{
+    height: 100%;
+    overflow-y: hidden;
+}
