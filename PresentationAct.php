@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once 'db.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,16 +20,14 @@
  <?php include 'menu.php';
  
  $idAct = $_POST['idAct'];
-
- $bdd = new PDO('mysql:host=localhost;dbname=wsb2;charset=utf8', 'root', '');
         
-        $reponse = $bdd->prepare('SELECT * FROM activite  where idAct=:idAct');
+        $reponse = $pdo->prepare('SELECT * FROM activite  where idAct=:idAct');
         $reponse->execute(array(
             ":idAct" => $idAct
 
         ));
 
-        $comment = $bdd->prepare('SELECT * FROM commentaire co join activite a on a.idAct=co.idAct join client c on c.Id=co.idClient where co.idAct=:idAct');
+        $comment = $pdo->prepare('SELECT * FROM commentaire co join activite a on a.idAct=co.idAct join client c on c.Id=co.idClient where co.idAct=:idAct');
        $comment->execute(array(
          ":idAct" => $idAct
        ));
@@ -36,7 +38,7 @@
 
 <?php while($donnees = $reponse->fetch()){ ?>
 
-  <div class="entoureTexte1"><h1><?php echo $donnees['nomAct']; ?></h1> <br>
+  <div class="entoureTexte1"><h1><?php echo $donnees->nomAct; ?></h1> <br>
 <table class="table">
   <thead>
     <tr>
@@ -48,10 +50,10 @@
   </thead>
   <tbody>
             <tr>
-            <th scope="row"><?php echo $donnees['nomProprio']; ?></th>
-            <td><?php echo $donnees['Lieu']; ?></td>
-            <td> <?php echo $donnees['Heure']; ?> </td>
-            <td><?php echo $donnees['Duree']; ?></td>
+            <th scope="row"><?php echo $donnees->nomProprio; ?></th>
+            <td><?php echo $donnees->Lieu; ?></td>
+            <td> <?php echo $donnees->Heure; ?> </td>
+            <td><?php echo $donnees->Duree; ?></td>
           </tr>
     
     
@@ -68,7 +70,7 @@
 
 <div class="t"><h1>Description : </h1> <br>
 
-                     <?php echo $donnees['Description']; ?> 
+                     <?php echo $donnees->Description; ?> 
                     
 </div>
 <?php } ?>
@@ -77,7 +79,7 @@
 <?php 
 while($com = $comment->fetch()){ 
 
- echo $com['Nom']; echo $com['commentaire'];echo $com['Heure']; ?> <br> <?php
+ echo $com->Nom; echo $com->commentaire;echo $com->Heure; ?> <br> <?php
 
 } ?>
 
