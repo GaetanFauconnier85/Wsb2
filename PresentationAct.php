@@ -35,32 +35,32 @@ require_once 'db.php';
  ?>
 
 
-<div class="p">
+    <div class="p">
 
-<?php while($donnees = $reponse->fetch()){ ?>
+      <?php while($donnees = $reponse->fetch()){ ?>
 
-  <div class="entoureTexte1"><h1><?php echo $donnees->nomAct; ?></h1> <br>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Propriétaire</th>
-      <th scope="col">Lieu</th>
-      <th scope="col">Date</th>
-      <th scope="col">Duree</th>
-    </tr>
-  </thead>
-  <tbody>
-            <tr>
-            <th scope="row"><?php echo $donnees->nomProprio; ?></th>
-            <td><?php echo $donnees->Lieu; ?></td>
-            <td> <?php echo $donnees->Heure; ?> </td>
-            <td><?php echo $donnees->Duree; ?></td>
+        <div class="entoureTexte1"><h1><?php echo $donnees->nomAct; ?></h1> <br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Propriétaire</th>
+            <th scope="col">Lieu</th>
+            <th scope="col">Date</th>
+            <th scope="col">Duree</th>
           </tr>
-    
-    
-  </tbody>
-</table>
-</div>
+        </thead>
+        <tbody>
+                  <tr>
+                  <th scope="row"><?php echo $donnees->nomProprio; ?></th>
+                  <td><?php echo $donnees->Lieu; ?></td>
+                  <td> <?php echo $donnees->Heure; ?> </td>
+                  <td><?php echo $donnees->Duree; ?></td>
+                </tr>
+          
+          
+        </tbody>
+      </table>
+    </div>
 
 </div>
 <?php  ?>
@@ -90,6 +90,6 @@ while($com = $comment->fetch()){
 
 } ?>
 
-
+</div>
     </body>
 </html>

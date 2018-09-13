@@ -22,7 +22,7 @@ require_once 'db.php';
 
         $IdSession = $_SESSION['id'];
 
-        $reponse = $pdo->query('SELECT * FROM activite a join participeact pa on pa.idAct = a.idAct join client c on c.Id = pa.idClient where '.$IdSession.'=Id');
+        $reponse = $pdo->query('SELECT * FROM activite a  join participeact pa on pa.idAct = a.idAct join client c on c.Id = pa.idClient where '.$IdSession.'=Id ');
 
         ?>
         <div>

@@ -4,9 +4,7 @@ require_once 'db.php';
 if (!empty($_POST)) {
     $errors = array();
 
-    $req = $pdo->prepare("SELECT * FROM activite WHERE nomAct = ? ");
-    $req->execute([$_POST['activity']]);
-    $result = $req->fetch();
+   
 
     if(empty($_POST['activity'])) {
         $errors['activity'] = "Veuiller remplir le champ activité !";
@@ -27,9 +25,17 @@ if (!empty($_POST)) {
     if(empty($errors)){
         $req = $pdo->prepare("INSERT INTO activite SET nomAct = ?, Heure = ?, Lieu = ?, nomProprio = ?, idProprio = ?, Duree = ?, Description = ? ");
         $req->execute([$_POST['activity'], $_POST['date'], $_POST['lieux'], $_SESSION['prenom'], $_SESSION['id'], $_POST['duree'], $_POST['Description']]);
+
+        $req1 = $pdo->prepare("SELECT * FROM activite  order by idAct desc  ");
+        $req1->execute();
+        $result = $req1->fetch();
+
+        $req2 = $pdo->prepare("INSERT INTO participeact SET idAct = ?, idClient	= ?");
+        $req2->execute([$result->idAct, $_SESSION['id']]);
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>

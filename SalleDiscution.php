@@ -32,6 +32,15 @@ require_once 'db.php';
     
     
     ?>
+    <?php 
+
+$test = $reponse->fetch(); 
+if(!empty($_POST)&& $test->idAct != $_SESSION['idAct']) {
+
+$req = $pdo->prepare("INSERT INTO participeact SET idClient = ?, idAct = ?");
+$req->execute([$idClient,$_SESSION['idAct']]);
+
+}?>
 
         <h1>Salle de discution</h1>   <hr>     
 
@@ -72,15 +81,7 @@ $requ->execute([$idClient, $_SESSION['idAct'],$mess]);
         <a href="activite.php"><input type="button" value = "Ajouter cette activité à mon panier" class="btn btn-success"></a>
     </form>
 
-<?php 
 
-$test = $reponse->fetch(); 
-if(!empty($_POST)&& $test->idAct != $_SESSION['idAct']) {
-
-$req = $pdo->prepare("INSERT INTO participeact SET idClient = ?, idAct = ?");
-$req->execute([$idClient,$_SESSION['idAct']]);
-
-}?>
 
     </body>
 </html>
