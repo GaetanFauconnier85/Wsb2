@@ -45,12 +45,12 @@ if (!empty($_POST)){
 
     if(empty($errors)){
 
-        $req = $pdo->prepare("INSERT INTO client SET Identifiant = ?, Email = ?, password = ?, Nom = ?, Prenom = ?, Promo = ?, ActPrefere = ?, status = ?, tel = ?, musiquePrefere = ?, PlatPrefere = ? ");
+        $req = $pdo->prepare("INSERT INTO client SET Identifiant = ?, Email = ?, password = ?, Nom = ?, Prenom = ?, Promo = ?, ActPrefere = ?, status = ?, tel = ?, musiquePrefere = ?, Caractere = ? ");
         $options = [
             'cost' => 13,
         ];
         $password = password_hash($_POST['password'], PASSWORD_BCRYPT,$options);
-        $req->execute([$_POST['username'], $_POST['email'], $password, $_POST['firstname'], $_POST['lastname'], $_POST['classroom'], $_POST['likesport'], $_POST['status'], $_POST['phone'], $_POST['music'], $_POST['meat']]);
+        $req->execute([$_POST['username'], $_POST['email'], $password, $_POST['firstname'], $_POST['lastname'], $_POST['classroom'], $_POST['likesport'], $_POST['status'], $_POST['phone'], $_POST['music'], $_POST['Caractere']]);
 
         $errors['succes'] = 'Votre Compte à bien été crée';
     }
@@ -172,14 +172,14 @@ if (!empty($_POST)){
                             </div>
 
                             <div class="form-group">
-                                <label for = "meat">votre plâts préféré :</label>
-                                <input type="text" name="meat" id="meat" class="form-control input-lg" placeholder="risotto">
+                                <label for = "Caractere">votre Carractère :</label>
+                                <input type="text" name="Caractere" id="Caractere" class="form-control input-lg" placeholder="positif">
                             </div>
 
                             <div>
                                 <input type="submit" class="btn btn-secondary" value="Inscrivez-vous">
+                                <a href="index.php"><p>Retour à la page de connexion</p></a>
                             </div>
-
                         </fieldset>
                     </form>
                 </div>
