@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once 'db.php';
+
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +19,16 @@
     </head> 
     <body>
         
-    <?php include 'menu.php';?>
+    <?php include 'menu.php';
+    $idClient = $_SESSION['id'];
+
+    $reponse = $pdo->prepare('SELECT * FROM participeact where idClient = ?');
+    $reponse->execute([$idClient]);
+
+    
+    $idAct = $_POST['test'];
+    
+    ?>
 
         <h1>Salle de discution</h1>   <hr>     
 
@@ -28,7 +43,20 @@
     <hr>
     <a href="Acceuil.php"><button type="button" class="btn btn-danger">Retour à l'accueil</button></a>                        
 
-    <a href="activite.php"><button type="button" class="btn btn-success">Ajouter cette activité à mon panier</button></a>
-        
+    <form action="" method="post">
+        <a href="activite.php"><input type="button" value = "Ajouter cette activité à mon panier" class="btn btn-success"></a>
+    </form>
+
+<?php 
+
+$test = $reponse->fetch(); 
+var_dump($test->idAct);
+if(!empty($_POST)&& $test->idAct != $idAct) {
+
+$req = $pdo->prepare("INSERT INTO participeact SET idClient = ?, idAct = ?");
+$req->execute([$idClient,$idAct]);
+
+}?>
+
     </body>
 </html>

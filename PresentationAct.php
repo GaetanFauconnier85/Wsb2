@@ -63,8 +63,13 @@ require_once 'db.php';
 
 </div>
 <div class="h">
+<form action="SalleDiscution.php" method="post">
+<input type="hidden" name="test" value="<?php echo $donnees->idAct; ?>" >
 
-  <a href="salleDiscution.php"><img src="contact.png" alt="oui"></a>
+<img  src="contact.png" alt="oui"><br>
+<input type="submit" value="Contact">
+  </form>
+  
   <br><br>Contacter le propriétaire !
 </div>
 
