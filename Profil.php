@@ -45,12 +45,12 @@ require_once 'db.php';
     </tr>
   </thead>
   <tbody>
-            <tr>
+        <tr>
             <td>Foot</th>
             <td>Positif</th>
             <td>19 ans</td>
             <td>Nantes</td>
-          </tr>
+        </tr>
     
     
   </tbody>
