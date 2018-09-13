@@ -19,11 +19,11 @@ if (!empty($_POST)) {
     }elseif(empty($_POST['Description'])) {
         $errors['Description'] = "Veuiller remplir le champ Description !";
     }
-
+/*
     if(($_POST['activity'] == $result->nomAct) && ($_POST['lieux'] == $result->Lieu) && ($_POST['date'] == $result->Heure )) {
         $errors['already'] = "Cette activité est déja proposé !";
     }
-
+*/
     if(empty($errors)){
         $req = $pdo->prepare("INSERT INTO activite SET nomAct = ?, Heure = ?, Lieu = ?, nomProprio = ?, idProprio = ?, Duree = ?, Description = ? ");
         $req->execute([$_POST['activity'], $_POST['date'], $_POST['lieux'], $_SESSION['prenom'], $_SESSION['id'], $_POST['duree'], $_POST['Description']]);
