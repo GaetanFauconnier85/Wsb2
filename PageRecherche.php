@@ -28,7 +28,6 @@ require_once 'db.php';
 
         ))
 
-        
         ?>
 
         <div class="flex-container">
@@ -39,8 +38,8 @@ require_once 'db.php';
                 <div class="container">
                     <?php 
                     while($donnees = $reponse->fetch()){ ?>
-                       <hr> <?php echo $donnees->nomAct;?> proposé par <?php echo $donnees->nomProprio;?><form action="PresentationAct.php" class="suc" method="post">
-                         <input type='hidden' name="idAct" value=<?php echo $donnees->idAct ?>>  <button type="submit"  class="btn btn-success suc">Voir Profil</button><hr>
+                       <hr> <?php echo $donnees->nomAct;?> proposé par <?php echo $donnees->nomProprio;?><form action="PresentationAct.php" class="suc" method="GET">
+                         <input type='hidden' name="idAct" value=<?php  echo $_SESSION['idAct'] ?>>  <button type="submit"  class="btn btn-success suc">Voir Profil</button><hr>
                     </form>
  <?php
                     } ?>

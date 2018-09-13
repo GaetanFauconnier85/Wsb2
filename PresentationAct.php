@@ -19,7 +19,7 @@ require_once 'db.php';
 
  <?php include 'menu.php';
  
- $idAct = $_POST['idAct'];
+ $idAct = $_GET['idAct'];
  $_SESSION['idAct'] = $idAct;
         
         $reponse = $pdo->prepare('SELECT * FROM activite  where idAct=:idAct');
@@ -89,6 +89,26 @@ while($com = $comment->fetch()){
  echo $com->Nom; echo $com->commentaire;echo $com->Heure; ?> <br> <?php
 
 } ?>
+
+    <form method="post" action="PresentationAct.php">
+    <div class="form-group">
+            <div class="input-group input-group-lg icon-addon addon-lg">
+                <input name="oui" type="text" placeholder="Ajouter commentaire" id="schbox" class="form-control input-lg">
+                <i class="icon icon-search"></i>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-inverse btn-lg">Ajouter</button>
+                </span>
+            </div>
+</div>
+
+<?php 
+
+if(!empty($_POST['oui'])) {
+$mess=$_POST['oui'];
+$requ = $pdo->prepare("INSERT INTO commentaire SET idClient = ? ,idAct=?,commentaire=?");
+$requ->execute([$idClient, $_SESSION['idAct'],$mess]);
+
+}?>
 
 </div>
     </body>
