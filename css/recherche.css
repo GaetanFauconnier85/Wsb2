@@ -32,7 +32,7 @@ body, html {
 }
 
 .container {
-    overflow-y: scroll;
+    overflow: hidden;
     height: 95%;
     width: 100%;
     padding-right: 15px;
@@ -97,7 +97,6 @@ p {
 }
 .suc{
     float: right;
-    margin : auto;
 }
 hr{
     margin : 5%;

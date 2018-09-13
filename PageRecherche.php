@@ -39,7 +39,7 @@ require_once 'db.php';
                 <div class="container">
                     <?php 
                     while($donnees = $reponse->fetch()){ ?>
-                       <hr> <?php echo $donnees->nomAct;?> proposé par <?php echo $donnees->nomProprio;?><form action="PresentationAct.php" method="post">
+                       <hr> <?php echo $donnees->nomAct;?> proposé par <?php echo $donnees->nomProprio;?><form action="PresentationAct.php" class="suc" method="post">
                          <input type='hidden' name="idAct" value=<?php echo $donnees->idAct ?>>  <button type="submit"  class="btn btn-success suc">Voir Profil</button><hr>
                     </form>
  <?php
@@ -47,22 +47,7 @@ require_once 'db.php';
                 </div>
 
             </div>
-            <div class="item two">
-                <div class="profile"></div>
-                <div class="information">
-
-                    <div class="description">
-                        <h2>Propriétaire :</h2><br>
-                        <h2>Activité :</h2><br>
-                        <h2>Dates :</h2><br>
-                        <h2>Heure :</h2><br>
-                    </div>
-
-                    <div class="map">
-
-                    </div>
-
-                </div>
+           >
             </div>
 
         </div>
