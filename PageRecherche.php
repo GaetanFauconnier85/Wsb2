@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once 'db.php';
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -15,12 +19,10 @@
         
         $act = $_POST['act'];
         $lieu = $_POST['lieu'];
-        
-        $bdd = new PDO('mysql:host=localhost;dbname=wsb2;charset=utf8', 'root', '');
 
-        $IdSession = '1';
+        $IdSession = $_SESSION['id'];
         
-        $reponse = $bdd->prepare('SELECT * FROM activite  where nomAct = :act AND Lieu = :lieu');
+        $reponse = $pdo->prepare('SELECT * FROM activite  where nomAct = :act AND Lieu = :lieu');
         $reponse->execute(array(
             ":act" => $act, ":lieu" => $lieu
 
@@ -37,8 +39,8 @@
                 <div class="container">
                     <?php 
                     while($donnees = $reponse->fetch()){ ?>
-                       <hr> <?php echo $donnees['nomAct'];?> proposé par <?php echo $donnees['nomProprio'];?><form action="PresentationAct.php" method="post">
-                         <input type='hidden' name="idAct" value=<?php echo $donnees['idAct'] ?>>  <button type="submit"  class="btn btn-success suc">Voir Profil</button><hr>
+                       <hr> <?php echo $donnees->nomAct;?> proposé par <?php echo $donnees->nomProprio;?><form action="PresentationAct.php" method="post">
+                         <input type='hidden' name="idAct" value=<?php echo $donnees->idAct ?>>  <button type="submit"  class="btn btn-success suc">Voir Profil</button><hr>
                     </form>
  <?php
                     } ?>
