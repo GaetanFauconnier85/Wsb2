@@ -20,6 +20,7 @@ require_once 'db.php';
  <?php include 'menu.php';
  
  $idAct = $_POST['idAct'];
+ $_SESSION['idAct'] = $idAct;
         
         $reponse = $pdo->prepare('SELECT * FROM activite  where idAct=:idAct');
         $reponse->execute(array(
@@ -62,6 +63,7 @@ require_once 'db.php';
 </div>
 
 </div>
+<?php  ?>
 <div class="h">
 <form action="SalleDiscution.php" method="post">
 <input type="hidden" name="test" value="<?php echo $donnees->idAct; ?>" >
