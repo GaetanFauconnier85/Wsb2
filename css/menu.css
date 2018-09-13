@@ -1,0 +1,53 @@
+body {margin: 0;}
+
+ul.sidenav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: auto;
+    overflow: auto;
+    position: relative;
+}
+
+ul.sidenav li a {
+    display: block;
+    float: left;
+    padding: 15px;
+    color: #000;
+    text-decoration: none;
+}
+
+.right {
+    float: right;
+}
+
+ul.sidenav li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+ul.sidenav li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+div.content {
+    margin-left: 0;
+    padding: 1px 16px;
+    height: 1000px;
+}
+
+@media screen and (max-width: 400px) {
+
+    ul.sidenav li a {
+        text-align: center;
+        float: none;
+    }
+
+    .right {
+        float: none;
+    }
+}
